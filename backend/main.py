@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from core.config import settings
 from db.session import engine   #new
-from db.base_class import Base  #new
+from databases import Database
+from db.base import Base  #new
 
 
 
