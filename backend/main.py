@@ -18,6 +18,6 @@ def create_tables():
 app = start_application()
 
 @app.get("/")
-def hello_api():
+def hello_api_BUT_BETTER():
     return {"messy": "hello world!"}
 
