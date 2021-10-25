@@ -1,9 +1,23 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from core.config import settings
+from db.session import engine   #new
+from db.base_class import Base  #new
 
 
-app = FastAPI(title=settings.PROJECT_TILE, version=settings.PROJECT_VERSION)
+
+def start_application():
+    app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
+    create_tables()
+    return app
+
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
+
+app = start_application()
 
 @app.get("/")
 def hello_api():
     return {"messy": "hello world!"}
+
